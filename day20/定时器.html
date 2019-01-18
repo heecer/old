@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="i1" style="color: #ff0000;"></div>
+    <input type="button" value="删除" onclick="del();"/>
+<script type="text/javascript">
+    function del() {
+        var v=confirm('是否要删除');
+        if (v==true) {
+            document.getElementById('i1').innerText='已删除';
+            setTimeout(function () {
+                document.getElementById('i1').innerText='';
+        },3000)
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends "master.html" %}
+{% block Title %}
+    用户组列表
+{% endblock %}
+{% block link %}
+    <link rel="stylesheet" href="/static/modal.css">
+{% endblock %}
+{% block group-info %}
+    <div style="margin: 60px 0 0 60px;">
+    <h1>{{ user_obj.0.user_to_group.group_name }}:</h1>
+    <div style="margin-bottom: 10px">
+        <button><a href="javascript:void(0)" id="ajax-add">添加用户</a></button>
+    </div>
+
+    <table border="1" style="text-align: center">
+        <thead>
+        <tr>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in user_obj %}
+            <tr id="{{ user.id }}">
+                <td>{{ user.user_name }} </td>
+                <td>{{ user.password }} </td>
+                <td>
+                    <a href="/python/edit_user-{{ user.id }}/" id="ajax-edit">修改</a>||
+                    <a href="javascript:void(0)" class="del_user">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% include "modal.html" %}
+{% endblock %}
+</div>

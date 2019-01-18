@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .page-body{
+            position: relative;
+            width: 980px;
+            height: 790px;
+            margin: 40px auto 0 auto;
+            border: #dddddd 1px solid;
+        }
+        .page-body .a{
+            position: absolute;
+            top: 80px;
+            left: 100px;
+            height: 400px;
+            width: 30%;
+            background: url("1.jpg") no-repeat;
+            background-size: 70%;
+        }
+        .page-body .b{
+            position: relative;
+            width: 300px;
+            height: 40px;
+
+            /*text-align: right;*/
+            /*border: #ff0000 1px solid;*/
+        }
+    </style>
+    <script>
+        function GetData() {
+            var i = document.getElementById('user');
+            var j = document.getElementById('pwd');
+            alert(j.value);
+            alert(j.value);
+        }
+    </script>
+</head>
+<body>
+    <div class="page-body">
+        <div class="a">
+            <!--<img src="1.jpg" style="width: 300px;height: 400px;"/>-->
+        </div>
+        <label style="position: relative; width: 300px;height: 40px;margin-left: 10px; display: inline-block;" for="user" >
+            <span style="position: absolute;left: 0; width: 70px;height: 40px;line-height: 40px;display: inline-block">用户名：</span>
+            <input id="user" type="text" style="position: absolute;left: 70px; width: 180px;height: 40px;padding-right: 50px;"/>
+            <span style="position: absolute;top: 3px;right: 0; width: 40px;height: 40px;background-image: url(pwd-icons-new.png);display: inline-block;"></span>
+            <div style="clear: both;"></div>
+        </label>
+        <label style="position: relative; width: 300px;height: 40px;margin-left: 10px;display: inline-block;" for="pwd" >
+            <span style="position: absolute;left: 0; width: 70px;height: 40px;line-height: 40px;display: inline-block">密码：</span>
+            <input id="pwd" type="text" style="position: absolute;left: 70px; width: 180px;height: 40px;padding-right: 50px;"/>
+            <span style="position: absolute;top: 3px;right: 0; width: 40px;height: 40px;background-image: url(pwd-icons-new.png);display: inline-block;"></span>
+            <div style="clear: both;"></div>
+        </label>
+        <div style="clear: both;"></div>
+    <input type="button" value="提交" onclick="GetData()"/>
+    </div>
+
+</body>
+</html>

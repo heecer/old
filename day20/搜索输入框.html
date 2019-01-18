@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div style="width: 300px;margin: 0 auto;">
+        <input  id="i1" type="text" onfocus="focus();" onblur="blur();" value="关键字"/>
+        <input  id="i2" type="text" placeholder="请输入关键字"/>
+    </div>
+    <script type="text/javascript">
+        function focus() {
+            console.log(1);
+            var tag = document.getElementById("i1");
+            var val = tag.value;
+            if(val == "关键字"){
+                tag.value = '';
+
+            }
+        }
+        function blur() {
+            console.log(2);
+            var tag = document.getElementById('i1');
+            var val = tag.value;
+            if(val.length == 0){
+                tag.value = '关键字';
+            }
+        }
+    </script>
+</body>
+</html>

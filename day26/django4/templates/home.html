@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .page-header{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background-color: #5c5c5c;
+        }
+        .page-header>.page-title{
+            text-align: center;
+            font-size: 35px;
+            color: #ff0000;
+            padding: 0 10px;
+        }
+        .page-body{
+            position: absolute;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header"><div class="page-title">后台管理</div></div>
+    <div class="page-body">
+        <h1>欢迎登录：{{ username }}</h1>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form >
+    {% csrf_token %}
+    <div style="width: 500px;margin: 0 auto">
+    <textarea name="content" id="editor_id" cols="30" rows="10"></textarea>
+</div>
+</form>
+
+<script type="text/javascript" src="/static/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="/static/kindeditor/kindeditor-all.js"></script>
+<script>
+    $(function () {
+        /*var options ={
+            width: '100%',       // 文本框宽度(可以百分比或像素)
+            height: '300px',     // 文本框高度(只能像素)
+            minWidth: 200,       // 最小宽度（数字）
+            minHeight: 400      // 最小高度（数字）
+        };*/
+        KindEditor.create('#editor_id',{
+            /*width: '100%',       // 文本框宽度(可以百分比或像素)
+            height: '300px',     // 文本框高度(只能像素)
+            minWidth: 200,       // 最小宽度（数字）
+            minHeight: 400      // 最小高度（数字）*/
+            uploadJson : '/upload_img/',   //上传请求路劲
+            fileManagerJson : '/file_manager/',     //文件管理请求路径
+            autoHeightMode : true,
+            allowFileManager : true,    //允许文件空间管理
+            csrfmiddlewaretoken : '{{ csrf_token }}',  //解除csrf限制
+            //filePostName : 'upload_file_name',
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+        body{
+            margin: 0;
+        }
+        .left{
+            float: left;
+        }
+        .right{
+            float: right;
+        }
+        .center{
+            text-align: center;
+        }
+        .page-header{
+            position: relative;
+            top: 0;
+            height: 48px;
+            background-color: #4325bb;
+            color: #fff;
+            line-height: 48px;
+            /*text-align: center;*/
+        }
+        .page-header .comment{
+            display: inline-block;
+            line-height: 1px;
+            padding: 10px 7px;
+            background: #008800;
+            color: #fff;
+            border-radius: 50% ;
+        }
+        .page-header .logo{
+            width: 200px;
+            background-color: #ffa207;
+            font-weight: bold;
+            min-width: 100px;
+        }
+        .page-header .title{
+            width: 800px;
+            height: 48px;
+        }
+        .page-header .item{
+            position: relative;
+            width: 200px;
+            height: 48px;
+            background: #5dff69;
+            min-width: 200px;
+        }
+        .page-header .item:hover{
+            background: #339137;
+        }
+        .page-header .item .pic{
+            width: 40px;
+            height: 40px;
+            margin-top: 4px;
+            margin-left: 5px;
+            border-radius: 50%;
+        }
+        .page-header .item .user{
+            position: absolute;
+            top: 48px;
+            left: 0;
+            width: 120px;
+            background: #ffffff;
+            color: #000;
+            z-index: 10;
+            display: none;
+        }
+        .page-header .item:hover .user{
+            display: block;
+        }
+        .page-header .item .user a{
+            display: block;
+            text-align: center;
+        }
+        .page-body{
+            position: fixed;
+            top: 50px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 5;
+        }
+        .page-body .body-left{
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 200px;
+            background-color: #4f4f4f;
+        }
+        .page-body .body-right{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 85%;
+            background: #81cebf;
+            overflow: auto;
+            min-width: 500px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <div class="logo left center">老男孩</div>
+        <div class="title left center">后台管理</div>
+        <div class="left" style="padding: 0 10px;">
+            <i class="fa fa-bell" aria-hidden="true"></i>
+        </div>
+        <div class="left" style="padding: 0 10px;">
+            <i class="fa fa-commenting" aria-hidden="true"></i>
+            <span class="comment">5</span>
+        </div>
+
+        <div class="item left">
+            <a href="#">
+                <img src="1.jpg" class="pic">
+            </a>
+            <div class="user">
+                <a>个人中心</a>
+                <a>系统消息</a>
+                <a>设置</a>
+                <a>退出</a>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="page-body">
+        <div class="body-left left">
+            <p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>
+            <p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>
+        </div>
+        <div class="body-right left">
+            <p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>
+            <p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>
+            <p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>
+            <p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>
+            <p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>
+            <p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>
+            <p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+
+</body>
+</html>

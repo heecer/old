@@ -1,0 +1,23 @@
+<script>
+    $(function () {
+        $('#ajax-submit').click(function () {
+            $.ajax({
+                url:'/python/login/',
+                type: 'POST',
+                {#data: {'user':$('input[name="user"]').val(),#}
+                {#    'pwd':$('input[name="pwd"]').val()},#}
+                data: $('.login-form').serialize(),
+                success:function (data) {
+                    var obj = JSON.parse(data);
+                    console.log(obj);
+                    if(obj.status){
+                        location.href = '/python/home/';
+                    }else {
+                        var v = obj.error;
+                        $('input[name="pwd"],input[name="user"]').siblings().removeClass('hide');
+                    }
+                }
+                })
+        })
+    })
+</script>

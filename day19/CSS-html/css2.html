@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*#i1{*/
+            /*background-color: red;*/
+            /*height: 50px;*/
+        /*}*/
+        /*#i2{*/
+            /*background-color: green;*/
+            /*height: 40px;*/
+        /*}*/
+        /*#i3{*/
+            /*background-color: blue;*/
+            /*height: 30px;*/
+        /*}*/
+        div {
+            background-color: chartreuse;
+            height: 40px;
+        }
+        .c1{
+            background-color: orangered;
+            height: 40px;
+        }
+        .c1 div{background-color: magenta;
+            height: 40px;}
+        #i1,#i2,.c1,.c2{
+            background-color: red;
+            height: 40px;
+        }
+        div[name='user']{
+            background-color: darkgreen;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div id="i1">hello world</div>
+    <div id="i2">hello world</div>
+    <div id="i3">hello world</div>
+    <br/>
+    <br/>
+    <div class="c1">hello world</div>
+    <span class="c1">
+        <div>hello world</div>
+    </span>
+    <div class="c2" name="user">hello world</div>
+</body>
+</html>

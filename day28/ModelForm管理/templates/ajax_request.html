@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" placeholder="用户名">
+<input type="button" value="Ajax提交" onclick="Ajax()">
+<input type="text" placeholder="密码">
+<input type="button" value="Jquery_Ajax提交" onclick="Jquery_Ajax()">
+
+<form action="/ajax_view/" method="post" target="ajax_iframe">
+    {% csrf_token %}
+    <iframe frameborder="1" id="ifm" name="ajax_iframe"></iframe>
+    <input id="url" type="text" placeholder="搜索内容" name="url">
+    <input type="submit" id="subForm" value="提交iframe" onclick="submitForm();">
+
+    <!--<input type="button" value="提交iframe" onclick="Ajax_iframe()">!-->
+
+</form>
+<script src="/static/jquery-1.12.4.js"></script>
+<script>
+   /*原生Ajax*/
+    function Ajax() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST','/ajax_view/',true);
+        xhr.onreadystatechange = function(){
+            var obj = JSON.parse(xhr.responseText);
+            console.log(obj);
+        };
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset-UTF-8');
+        xhr.send('name=root;pwd=123');
+    }
+    /*Jquery_Ajax请求*/
+   function Jquery_Ajax() {
+       $.ajax({
+           url:'/ajax_view/',
+           type:'POST',
+           data:{'name':'root','pwd':'1234'},
+           success:function (data) {
+               var obj = JSON.parse(data);
+               console.log(obj);
+
+           }
+       })
+   }
+   /*Iframe_Ajax请求
+    function Ajax_iframe() {
+        var url = $('#url').val();
+        $('#ajax_iframe').attr('src',url);
+    }*/
+    function submitForm() {
+        $('#ifm').load(function () {
+            var text = $('#ifm').contents().find('body').text();
+            var obj = JSON.parse(text);
+            console.log(obj);
+
+        })
+    }
+</script>
+</body>
+</html>

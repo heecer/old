@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/modal.css">
+</head>
+<body>
+    <h1>业务线表：</h1>
+    <div><button id="add_group">添加</button></div>
+    <table border="1">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>业务线</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in groups %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.group }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h1>业务线列表(对象)：</h1>
+    <ul style="list-style: none;">
+        {% for item in groups %}
+            <li>{{ item.id }}--->{{ item.group }}</li>
+        {% endfor %}
+    </ul>
+    <h1>业务线列表(字典)：</h1>
+    <ul style="list-style: none;">
+        {% for item in groups_dict  %}
+            <li>{{ item.id }}--->{{ item.group }}</li>
+        {% endfor %}
+    </ul>
+    <h1>业务线列表(元组)：</h1>
+    <ul style="list-style: none;">
+        {% for item in groups_tuple  %}
+            <li>{{ item.0 }}--->{{ item.1 }}</li>
+        {% endfor %}
+    </ul>
+    <div class="shade hide"></div>
+    <div class="modal hide">
+        <form action="/business/" method="post">
+            <p><input type="text" placeholder="业务线名" name="group_id"></p>
+            <input type="submit" value="添加" name="submit">
+            <input type="button" value="取消" name="cancel">
+        </form>
+    </div>
+
+    <script type="text/javascript" src="/static/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $('#add_group').click(function () {
+                $('.shade,.modal').removeClass('hide');
+            });
+
+            $('[name="cancel"]').click(function () {
+                $('.shade,.modal').addClass('hide');
+            })
+        })
+    </script>
+</body>
+</html>

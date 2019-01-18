@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="i1">
+	<input type="button" id="i2" value="确认">
+	<ul id="i3">
+		<li>1</li>
+		<li>2</li>
+	</ul>
+	<script type="text/javascript" src="E:\老男孩\day21\jquery\jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$("#i2").click(function () {
+			// body...
+			var v = $("#i1").val();
+			var temp = "<li>" + v +"</li>";
+			$("ul").append(temp);
+		})
+	</script>
+</body>
+</html>

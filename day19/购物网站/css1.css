@@ -1,0 +1,22 @@
+.page-header {
+    height: 40px;
+    background-color: #dddddd;
+    line-height: 40px;
+}
+.c1{
+    width: 980px;
+    margin: 0 auto;
+}
+.c2{height: 40px;
+    width: 980px;
+    line-height: 40px;
+    margin: 0 auto;
+}
+.c3{height: 35px;float: left;background-color: #dddddd;margin-right: 10px;}
+.c4{width: 30%;float: left;border: 1px solid #dddddd;}
+.c5{float: left;color: #000000;font-size: 60%;margin-left: 5px;"
+                href=""}
+.c6{font-size: 10pt;font-weight: bold;float: left;margin-left: 10px;}
+.c7{display: inline-block; float: left;margin-left: 10px;}
+.c8{border: 1px solid #ff0000;width: 120px;float: left;margin-right: 10px;margin-bottom: 10px;}
+.c9{color: #ffffff;background-color: #ff0000; float: right;margin-right: 10px;}

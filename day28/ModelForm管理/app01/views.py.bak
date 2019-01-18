@@ -1,0 +1,49 @@
+from django.shortcuts import render, HttpResponse,redirect
+from django import forms
+from app01 import models
+from  django.forms import Form,fields,widgets
+
+# Create your views here.
+
+class LoginForm(Form):
+    '''登录表单'''
+    # 用户标签
+    name = fields.CharField(label='用户名',
+                            max_length=32,
+                            widget= widgets.Input(attrs={'class':'user'}),
+                            error_messages={'required':'用户名不能为空',
+                                            'max_length':'不能超过32个字符'})
+    # 密码标签
+    password = fields.CharField(label='密码',
+                           max_length=16,
+                           min_length=6,
+                           widget=widgets.PasswordInput(attrs={'class': 'pwd'}),
+                           error_messages={'required':'密码不能为空',
+                                           'min_length':'不能小于6个字符',
+                                           'max_length':'不能大于16个字符',})
+    # 邮箱标签
+    email =fields.EmailField(label='邮箱',
+                             error_messages={'required':'邮箱不能为空',
+                                             'code':'邮箱格式不对'})
+    # 验证码标签
+    # code = fields.ChoiceField(label='验证码',
+    #                           choices=models.App.objects.values_list('id','user_app'))
+    # def __init__(self,*args, **kwargs):
+    #     '''自动更新加载'''
+    #     super(LoginForm,self).__init__(*args, **kwargs)
+    #     self.fields['code'].choices = models.App.objects.values_list('id','app_name')
+
+
+def index(request):
+    '''index请求处理'''
+    if request.method == 'GET':
+        LF_obj = LoginForm()
+        return render(request,'index.html',{'LF_obj':LF_obj})
+    elif request.method == 'POST':
+        LF_obj = LoginForm(request.POST)
+        if LF_obj.is_valid():
+
+            models.User.objects.create(**LF_obj.cleaned_data)
+            return redirect('http://www.baidu.com')
+        else:
+            return render(request,'index.html',{'LF_obj':LF_obj})

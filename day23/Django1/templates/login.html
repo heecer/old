@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/commons.css">
+</head>
+<body>
+<form action="/login/" method="post" target="_blank">
+    <p>
+        <label for="user">用户名：</label>
+        <input type="text" name="user">
+    </p>
+    <p>
+        <label for="pwd">密码：</label>
+        <input type="password" name="pwd">
+        <input type="submit" value="提交">
+        <span style="color: #ff0000;">{{ error_msg }}</span>
+    </p>
+</form>
+<script type="text/javascript" src="/static/jquery-1.12.4.js"></script>
+</body>
+</html>

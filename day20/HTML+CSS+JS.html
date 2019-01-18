@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+    <style>
+        #i1{
+            width: 300px;
+            height: 48px;
+            margin: 0 auto;
+            color: red;
+        }
+    </style>
+<body>
+    <div id="i1">删除</div>
+    <script type="text/javascript">
+        var tag = document.getElementById('i1');
+        tag.onclick = function () {
+            confirm('是否删除')
+        }
+    </script>
+</body>
+</html>

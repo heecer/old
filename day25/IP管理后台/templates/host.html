@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/modal.css">
+</head>
+<body>
+<h1>主机列表(对象)：</h1>
+<div><button id="add_host">添加</button></div>
+<table border="1">
+    <thead>
+    <tr>
+        <td>序号</td>
+        <td>主机名</td>
+        <td>IP</td>
+        <td>端口</td>
+        <td>业务线ID</td>
+        <td>业务线名称</td>
+        <td>业务线编码</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in hosts %}
+    <tr host_id="{{ item.nid }}" host_group_id="{{ item.host_group_id }}">
+        <td>{{forloop.counter }}</td>
+        <td>{{item.hostname }}</td>
+        <td>{{item.ip }}</td>
+        <td>{{item.port }}</td>
+        <td>{{item.host_group_id }}</td>
+        <td>{{item.host_group.group}}</td>
+        <td>{{item.host_group.code}}</td>
+        <td><a class="edit" >编辑</a>||<a class="delet" >删除</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<h1>主机列表(字典)：</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <td>主机名</td>
+        <td>业务线名称</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in group_name %}
+    <tr host_id="{{ item.nid }}">
+        <td>{{item.hostname }}</td>
+        <td>{{item.host_group__group }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    <h1>主机列表(对象)：</h1>
+    <ul style="list-style: none;">
+        {% for item in hosts %}
+            <li>{{ item.nid }}--->{{ item.hostname }}-->{{ item.ip }}:{{ item.port }}->{{ item.host_group.group }}</li>
+        {% endfor %}
+    </ul>
+    <h1>主机列表(字典)：</h1>
+    <ul style="list-style: none;">
+        {% for item in host_tuple  %}
+            <li>{{ item.0 }}--->{{ item.1 }}-->{{ item.2 }}:{{ item.3 }}->{{ item.4 }}</li>
+        {% endfor %}
+    </ul>
+    <h1>主机列表(元组)：</h1>
+    <ul style="list-style: none;">
+        {% for item in host_dict  %}
+            <li>{{ item.nid }}--->{{ item.hostname }}-->{{ item.ip }}:{{ item.port }}->{{ item.host_group_id }}->{{ group_name }}</li>
+        {% endfor %}
+    </ul>
+
+    <div class="shade hide"></div>
+    <div class="modal hide">
+        <form action="/host/" method="post">
+            <p><input type="text" placeholder="主机名" name="hostname" id="hostname"></p>
+            <p><input type="text" placeholder="IP" name="ip" id="ip"></p>
+            <p><input type="text" placeholder="端口" name="port" id="port"></p>
+            <div id="group">
+               <select name="group_id" id="group_id">
+                {% for item in groups %}
+                    <option value="{{ item.id }}">{{ item.group }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div><span id="error_msg" style="color: #fa0000;"></span></div>
+            <input type="submit" value="提交" id="submit">
+            <a id="ajax_click" style="background-color: #0fff0e;">点击我吧</a>
+            <input type="button" value="取消" id="cancel">
+        </form>
+    </div>
+    <div class="edit_modal hide">
+        <form action="/host/" method="post" id="edit_form">
+            <p><input type="text" class="" name="host_id"></p>
+            <p><input type="text" placeholder="主机名" name="hostname"></p>
+            <p><input type="text" placeholder="IP" name="ip"></p>
+            <p><input type="text" placeholder="端口" name="port"></p>
+            <div id="group">
+               <select name="group_id" id="group_id">
+                {% for item in groups %}
+                    <option value="{{ item.id }}">{{ item.group }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div><span id="error_msg1" style="color: #fa0000;"></span></div>
+            <div id="ajax_edit">修改</div>
+        </form>
+    </div>
+
+<script type="text/javascript" src="/static/jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        $('#add_host').click(function () {
+            $('.shade,.modal').removeClass('hide');
+        });
+
+        $('#cancel').click(function () {
+            $('.shade,.modal').addClass('hide');
+        });
+        $('#ajax_click').click(function () {
+            $.ajax({
+                url:'/add_ajax/',
+                type: 'POST',
+                data: {'hostname':$('#hostname').val(),'ip':$('#ip').val(),'port':$('#port').val(),'group_id':$('#group_id').val()},
+                success: function (data) {
+                    var v = JSON.parse(data);
+                    if (v.status){
+                        alert('OK');
+                        location.reload();
+                    }else {
+                        $('#error_msg').text(v.error);
+                    }
+                    /*if (data == 'OK'){
+                        location.reload()
+                    }else {
+                        alert(data)
+                    }*/
+                }
+            })
+        });
+        $('.edit').click(function () {
+            $('.shade,.edit_modal').removeClass('hide');
+            var group_id = $(this).parent().parent().attr('host_group_id');
+            var host_id = $(this).parent().parent().attr('host_id');
+            $('#edit_form').find('select').val(group_id);
+            $('#edit_form').find('input[name="host_id"]').val(host_id);
+        });
+        $('#ajax_edit').click(function () {
+            $.ajax({
+                url:'/edit_ajax/',
+                type: 'POST',
+                data: $('#edit_form').serialize(),
+                success: function (data) {
+                    var v = JSON.parse(data);
+                    if (v.status) {
+                        alert('OK');
+                        location.reload();
+                    } else {
+                        $('#error_msg1').text(v.error);
+                    }
+                }
+            })
+        })
+        $('.delet').click(function () {
+            var host_id = $(this).parent().parent().attr('host_id');
+            $.ajax({
+                url: '/delet_ajax/',
+                type: 'POST',
+                data: {'host_id':host_id},
+                success: function (data) {
+                    location.reload()
+                }
+            })
+        })
+        
+        
+    })
+</script>
+</body>
+</html>

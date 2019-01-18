@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <style type="text/css">
+        body{
+            margin: 0;
+        }
+        .page-header{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background-color: blue;
+            color: white;
+            text-align: center;
+        }
+        .left-menu{
+            display: block;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            bottom: 0;
+            width: 200px;
+            text-align: right;
+            background-color: #bc80ff;
+        }
+        .left-menu .menu{
+            display: block;
+            padding: 10px;
+        }
+        .container-right{
+            position: absolute;
+            top: 50px;
+            left: 220px;
+            right: 20px;
+            bottom: 0;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">{{ user }},欢迎进入后台管理</div>
+    <div>
+        <div class="left-menu">
+            <a class="menu" href="/app01/user/">用户管理</a>
+            <a class="menu" href="/app01/groups/">用户组管理</a>
+        </div>
+    </div>
+    <div class="container-right">
+        <h2>编辑用户：</h2>
+        <form action="/app01/useredit-{{ user_list.id }}/" method="post">
+            ID：<input type="text" name="id" value="{{ user_list.id }}">
+            用户名：<input type="text" name="username" placeholder="{{ user_list.username }}" value="{{ user_list.username }}">
+            密码：<input type="text" name="pwd" placeholder="{{ user_list.password }}" value="{{ user_list.password }}">
+            用户组：<select name="group" id="group">
+                        {% for row in groups %}
+                            <option value="{{ row.uid }}">{{ row.caption }}</option>
+                        {% endfor %}
+
+                    </select>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+    <script type="text/javascript" href="jquery-1.12.4.js"></script>
+</body>
+</html>

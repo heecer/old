@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .upload_file{
+            position: relative;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+
+        }
+        .ajax_file{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            opacity: 0;
+            z-index: 10;
+        }
+        .upload{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: inline-block;
+            background-color: #00b5ff;
+            color: #000000;
+            border: 1px solid #ffffff;
+            border-radius: 10%;
+            z-index: 9;
+        }
+    </style>
+</head>
+<body>
+<h2>form表单上传文件</h2>
+<form action="/upload/" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="上传">
+</form>
+<hr/>
+<h2>XHR_Ajax上传文件</h2>
+<div class="upload_file">
+    <input type="file" id="ajax_file" name="ajax_file" class="ajax_file">
+    <a class="upload" id="ajax_load">上传</a>
+    <input type="button" value="原生Ajax上传" onclick="XHR_upload();">
+</div>
+<hr/>
+<h2>JQuery_Ajax上传文件</h2>
+<div>
+    <input type="button" value="JQueryAjax上传" onclick="jQuery_ajax_upload();">
+</div>
+<hr/>
+<h2>iframe_Ajax上传文件</h2>
+<div>
+    <form id="iframe_form" action="/upload/" method="post" target="iframe_upload" enctype="multipart/form-data">
+        <iframe id="iframe_upload"  name="iframe_upload"></iframe>
+        <input type="file" name="file" onchange="change_upload();">
+        <input type="submit" onclick="Iframe_upload();"/>
+    </form>
+    <div id="preview"></div>
+</div>
+<script type="text/javascript" src="/static/jquery-1.12.4.js"></script>
+<script>
+    /*XHR_Ajax上传文件*/
+    function XHR_upload() {
+        var file_obj = document.getElementById('ajax_file').files[0];
+        var xhr = new XMLHttpRequest();
+        var FD = new FormData();
+        xhr.open('POST','/upload/',true);
+        FD.append('name','root');
+        FD.append('file',file_obj);
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState == 4){
+                var obj = JSON.parse(xhr.responseText);
+                console.log(obj);
+            }
+        };
+        xhr.send(FD);
+    }
+    /*JQuery_Ajax上传文件*/
+    function jQuery_ajax_upload() {
+        var file_obj = $('#ajax_file')[0].files[0];
+        var FD = new FormData();
+        FD.append('file',file_obj);
+        $.ajax({
+            url:'/upload/',
+            type:'POST',
+            data:FD,
+            processData:false,
+            contentType:false,
+            success:function (data) {
+                var obj = JSON.parse(data);
+                console.log(obj);
+            }
+        })
+    }
+    /*iframe_Ajax上传文件*/
+    /*图片上传预览*/
+    function Iframe_upload() {
+        $('#iframe_upload').load(function () {
+            var data = $('#iframe_upload').contents().find('body').text();
+            var obj = JSON.parse(data);
+            console.log(obj);
+            $('#preview').empty();
+            var imgTag = document.createElement('img');
+            imgTag.src = '/' + obj.data;
+           console.log(imgTag.src);
+            $('#preview').append(imgTag);
+
+        })
+    }
+    /*图片上传自动预览*/
+    function change_upload() {
+
+        $('#iframe_upload').load(function () {
+            var data = $('#iframe_upload').contents().find('body').text();
+            var obj = JSON.parse(data);
+            console.log(obj);
+            $('#preview').empty();
+            var imgTag = document.createElement('img');
+            imgTag.src = '/' + obj.data;
+           console.log(imgTag.src);
+            $('#preview').append(imgTag);
+        });
+        $('#iframe_form').submit();
+    }
+</script>
+</body>
+</html>

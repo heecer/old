@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/modal.css">
+    <style>
+        .host-tag{
+            display: inline-block;
+            padding: 3px;
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+    <h1>应用列表：</h1>
+        <div><input id="add_app" type="button" value="添加"/></div>
+        <div>
+            <table border="1">
+                <thead>
+                <tr>
+                    <td>应用名</td>
+                    <td>主机名</td>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for app in apps %}
+                        <tr>
+                            <td>{{ app.name }}</td>
+                            <td>
+                                {% for host in app.r.all %}
+                                    <span class="host-tag" hid="{{ host.nid }}">{{ host.hostname }}</span>
+                                {% endfor %}
+                            </td>
+                            <td><a class="edit">编辑</a></td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+    <div class="shade hide"></div>
+    <div class="modal hide">
+        <form action="/ajax_add_app/" method="post" id="ajax_form">
+            <p><input type="text" placeholder="应用名" name="appname" id="appname"></p>
+            <p id="hosts">
+               <select name="host_list" id="host_list" multiple>
+                {% for host in hosts %}
+                    <option value="{{ host.nid }}">{{ host.hostname }}</option>
+                {% endfor %}
+                </select>
+            </p>
+            <div><span id="error_msg" style="color: #fa0000;"></span></div>
+            <input type="submit" value="提交" id="submit">
+            <a id="ajax_click" style="background-color: #0fff0e;">点击我吧</a>
+            <input type="button" value="取消" id="cancel">
+        </form>
+    </div>
+    <div class="edit_modal hide">
+        <form action="/host/" method="post" id="edit_form">
+            <p><input type="text" class="hide" name="host_id"></p>
+            <p><input type="text" placeholder="主机名" name="app"></p>
+            <div id="group">
+               <select name="host_list"  multiple>
+                {% for host in hosts %}
+                    <option value="{{ host.nid }}">{{ host.hostname }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div><span id="error_msg1" style="color: #fa0000;"></span></div>
+            <div id="ajax_edit">修改</div>
+        </form>
+    </div>
+    <script type="text/javascript" src="/static/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $('#add_app').click(function () {
+                $('.modal,.shade').removeClass('hide')
+            });
+            $('#cancel').click(function () {
+                $('.modal,.shade').addClass('hide')
+            });
+            $('#ajax_click').click(function () {
+                $.ajax({
+                    url: '/ajax_add_app/',
+                    type: 'POST',
+                    data: {'name':'python','pwd':456},
+                    {#data: {'appname':$('#appname').val(),'host_list':$('#host_list').val()},#}
+                    data: $('#ajax_form').serialize(),
+                    {#dataType: 'json',#}
+                    {#traditional: true,#}
+                    success: function (obj) {
+                        JSON.parse(obj)
+                        },
+                    error:function () {
+                        null;
+                    }
+                });
+            });
+            $('.edit').click(function () {
+                $('.shade,.edit_modal').removeClass('hide')
+            })
+        })
+    </script>
+</body>
+</html>

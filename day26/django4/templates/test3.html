@@ -1,0 +1,67 @@
+{% load add %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .pagination .page{
+            display: inline-block;
+            padding: 5px;
+            margin: 2px 5px;
+            background-color: blue;
+            color: #ffffff;
+        }
+        .pagination .page.active{
+            font-weight: bolder;
+            background-color: orange;
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    {{ user_str }}
+    {{ user_str|lower }}
+    {{ user_str|first|upper }}
+    {% Add 45 55 %}
+    {{ 'Hello'|ADD:'World' }}
+    {% include 'ul.html' %}
+    <div>
+        <select id="sel" onchange="changePageSize(this)">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+    <div>
+        <a href="/a/test3/?p=1">1</a>
+        <a href="/a/test3/?p=2">2</a>
+        <a href="/a/test3/?p=3">3</a>
+    </div>
+    {{ page_str|safe }}
+    {{ pages }}
+    <div class="pagination">
+       {{ pages_str }}
+    </div>
+    <script src="/static/jquery-1.12.4.js"></script>
+    <script src="/static/jquery.cookie.js"></script>
+    <script>
+        $(function () {
+            var v = $.cookie('per-page-size');
+            $('#sel').val(v);
+        });
+        function jumpTo(ths,base) {
+            var v = ths.previousElementSibling.value;
+            location.href = base + v;
+        }
+        function changePageSize(ths) {
+            var v = $(ths).val();
+            $.cookie('per-page-size',v);
+            location.reload();
+        }
+
+    </script>
+
+</body>
+</html>

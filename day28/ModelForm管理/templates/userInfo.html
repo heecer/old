@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ol>
+        {% for user in user_list %}
+            <p>
+                <li>{{ user.name }}--
+                    {{ user.user_type.type }}--
+                    <a href="/edit-{{ user.id }}/">编辑</a></li>
+        {% endfor %}
+
+    </ol>
+</body>
+</html>

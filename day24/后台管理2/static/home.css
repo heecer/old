@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+}
+
+#i1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+.menu{
+    position: absolute;
+    top: 150px;
+    left: 100px;
+}
+
+body>div #t1{
+    position: absolute;
+    top: 200px;
+    left: 100px;
+}
+
+body>div #t2{
+    position: absolute;
+    top: 200px;
+    left: 300px;
+}

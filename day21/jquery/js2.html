@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="全选" onclick="selAll();"/>
+	<input type="button" value="反选" onclick="revAll();"/>
+	<input type="button" value="取消" onclick="backAll();"/>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>选择</td>
+				<td>IP</td>
+				<td>Port</td>
+			</tr>
+		<tbody>
+				<tr>
+					<td><input type="checkbox"></td>
+					<td>192.168.1.0</td>
+					<td>80</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox"></td>
+					<td>192.168.1.1</td>
+					<td>80</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox"></td>
+					<td>192.168.1.2</td>
+					<td>80</td>
+				</tr>
+			</tbody>	
+		</thead>
+	</table>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		
+		function selAll() {
+			// body...
+			$(":checkbox").prop("checked",true);
+		}
+		function backAll() {
+			// body...
+			$(":checkbox").prop("checked",false);
+		}
+		/*
+		反选方法一：
+		function revAll() {
+			// body...
+			$(":checkbox").each(function () {
+				// body...
+				console.log(this)
+				if(this.checked){
+					this.checked = false;
+				}else{
+					this.checked = true;
+				}
+			})
+		}*/
+		// 方法二
+		/*function revAll() {
+			// body...
+			$(":checkbox").each(function () {
+				// body...
+				if($(this).prop("checked")){
+					$(this).prop("checked",false);
+				}else{
+					$($(this).prop("checked",true));
+				}
+			})
+		}*/
+		// 方法三
+		function revAll() {
+			// body...
+			$(":checkbox").each(function(){
+				var v = this.checked?false:true;
+				this.checked = v;
+			})
+		}
+
+	</script>
+</body>
+</html>

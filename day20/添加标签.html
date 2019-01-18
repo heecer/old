@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value='添加' onclick="addTag()">
+    <input type="button" value='添加1' onclick="addTag1()">
+    <div id="i1">
+        <p><input type="text" placeholder="标签"></p>
+    </div>
+    <script type="text/javascript">
+        function addTag() {
+            var tag = "<input type='text' placeholder='标签'/><hr/>";
+            document.getElementById('i1').insertAdjacentHTML("beforeEnd",tag);
+        }
+        function addTag1() {
+            var tag =document.createElement('input');
+            tag.setAttribute('type','text');
+            document.getElementById('i1').appendChild(tag);
+        }
+    </script>
+</body>
+</html>

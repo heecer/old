@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/home.css">
+</head>
+<body>
+    <div id="i1">**后台管理**</div>
+    <div>
+        <table id="t1" border="1" style="text-align: center">
+            <thead>
+            <tr>
+                <td>用户</td>
+                <td>IP</td>
+                <td>端口</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>A</td>
+                <td>192.168.0.1</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>192.168.0.2</td>
+                <td>8001</td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>192.168.0.3</td>
+                <td>8001</td>
+            </tr>
+            </tbody>
+        </table>
+        <table id="t2" border="1" style="text-align: center">
+            <thead>
+            <tr>
+                <td>用户</td>
+                <td>性别</td>
+                <td>邮箱</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in user_list %}
+            <tr>
+                <td>{{ row.user }}</td>
+                <td>{{ row.gender }}</td>
+                <td>{{ row.email }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="menu">
+        <form action="/home/" method="post">
+            <input type="text" name="username" placeholder="用户名">
+            <input type="text" name="gender" placeholder="性别">
+            <input type="text" name="email" placeholder="邮箱">
+            <input type="submit" value="提交">
+        </form>
+    </div>
+    <script type="text/javascript" href="/static/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        $(document).read(function () {
+            
+        })
+    </script>
+</body>
+</html>

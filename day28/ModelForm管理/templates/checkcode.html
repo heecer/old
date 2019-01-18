@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/validatecode/" id="check_code_id" method="post">
+    {% csrf_token %}
+    <div>
+        <lable for="check_code">验证码：</lable>
+        <input type="text" id="check_code_id" name="check_code" placeholder="验证码" />
+        <img src="/check_code.html" onclick="changeCheckCode(this)">
+        <div><input type="submit" value="提交"></div>
+
+    </div>
+</form>
+<script type="text/javascript" src="/static/jquery-1.12.4.js"></script>
+<script>
+        function changeCheckCode(ths) {
+            ths.src = ths.src + '?';
+        }
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <input type="button" value="添加" onclick="add()"/>
+        <input type="button" value="全选" onclick="ChooseAll()"/>
+        <input type="button" value="取消" onclick="CancleAll()"/>
+        <input type="button" value="反选" onclick="Reverse()"/>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <td>选择</td>
+            <td>IP</td>
+            <td>端口</td>
+        </tr>
+        </thead>
+        <tbody id="tb">
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>192.168.1.101</td>
+                <td>101</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>192.168.1.102</td>
+                <td>102</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>192.168.1.103</td>
+                <td>103</td>
+            </tr>
+        </tbody>
+    </table>
+<script>
+    function add() {}
+    function ChooseAll() {
+        var tbody = document.getElementById('tb');
+        var tr_list = tbody.children;
+        for(var i=0;i<tr_list.length;i++){
+            current_tr = tr_list[i];
+            var checkbos_value = current_tr.children[0].children[0];
+            checkbos_value.checked = true;
+        }
+    }
+    function CancleAll() {
+        var tbody = document.getElementById('tb');
+        var tr_list = tbody.children;
+        for(var i=0;i<tr_list.length;i++){
+            current_tr = tr_list[i];
+            var checkbos_value = current_tr.children[0].children[0];
+            checkbos_value.checked = false;
+        }
+    }
+    function Reverse() {
+        var tbody = document.getElementById('tb');
+        var tr_list = tbody.children;
+        for(var i=0;i<tr_list.length;i++){
+            current_tr = tr_list[i];
+            var checkbos_value = current_tr.children[0].children[0];
+            if(checkbos_value.checked){
+                checkbos_value.checked = false;
+            } else{
+                checkbos_value.checked = true;
+            }
+        }
+    }
+</script>
+</body>
+</html>

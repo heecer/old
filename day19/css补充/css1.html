@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .page-header{
+            height: 48px;
+            width: 100%;
+            background-color: #000000;
+            color: #ff0000;
+            text-align: center;
+            position: fixed;
+            top: 0;
+
+        }
+        .gotop{
+             color: #ffffff;
+             background: #000000;
+             font-size: 12pt;
+             width: 40px;
+             height: 40px;
+             position: fixed;
+             bottom: 30px;
+             right: 30px;
+        }
+        .body{
+            height: 5000px;
+            margin-top: 50px;
+            background-color: #dddddd;
+            color: #000080;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">头部</div>
+    <div onclick="gotop()" class="gotop">
+        返回顶部
+    </div>
+    <div class="body">开始……</div>
+    <script>
+        function gotop() {
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>

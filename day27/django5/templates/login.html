@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/login.css">
+</head>
+<body>
+    <div class="page-header">
+        <span class="title">欢迎来到Python世界</span>
+    </div>
+    <div class="page-body">
+        <form action="/python/login/" method="post" class="login-form">
+            {% csrf_token %}
+            <div class="login-box">
+                <label class="login-span" for="user">
+                    <span style="color: #ff0000;">*</span>
+                    <span>用户名：</span>
+                </label>
+                <input type="text" placeholder="用户名" name="user" id="user">
+                <div class="login-error hide">{{ response.error }}</div>
+            </div>
+            <div class="login-box">
+                <label class="login-span" for="pwd">
+                    <span style="color: #ff0000;">*</span>
+                    <span>密码：</span>
+                </label>
+                <input type="password" placeholder="密码" name="pwd" id="pwd">
+                <div class="login-error hide">密码错误</div>
+            </div>
+            <div class="login-box">
+                <label class="login-span" for="VerfCode">
+                    <span style="color: #ff0000;">*</span>
+                    <span>验证码：</span>
+                </label>
+                <input type="text" placeholder="验证码" name="VerfCode" id="VerfCode">
+                <div class="login-error hide">验证码错误</div>
+            </div>
+            <div><input type="checkbox" value="1" name="free-login">10秒免登陆</div>
+            <div class="login-box" style="margin-left: 105px">
+                <input type="submit" value="登录" style="width: 100px;" id="ajax-submit">
+                <input type="submit" value="注册" style="width: 100px;">
+                <div><span></span></div>
+            </div>
+        </form>
+            <img src="/static/2.jpg" class="pic"/>
+
+    </div>
+    <script type="text/javascript" src="/static/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/static/jquery.cookie.js"></script>
+    <script>
+        $(function () {
+
+        })
+    </script>
+</body>
+</html>

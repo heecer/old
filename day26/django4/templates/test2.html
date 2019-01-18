@@ -1,0 +1,43 @@
+{% extends 'template.html' %}
+
+{% block css %}
+    <style>
+        .t1 {
+            height: 400px;
+            margin-top: 60px;
+            margin-left: 100px;
+        }
+    </style>
+{% endblock %}
+{% block Title %}
+    用户请求
+{% endblock %}
+
+{% block header %}
+    用户信息
+{% endblock %}
+
+{% block test %}
+    <div class="t1">
+        <table border="1">
+            <thead>
+            <tr>
+                <td>序号</td>
+                <td>用户名</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in user_list %}
+                <tr>
+                    <td>{{ user }}</td>
+                    <td>Python</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% include 'tag.html' %}
+    {% include 'tag.html' %}
+    {% include 'tag.html' %}
+    {% include 'tag.html' %}
+    </div>
+{% endblock %}

@@ -1,0 +1,80 @@
+body{
+    margin: 0;
+}
+.hide{
+    display: none;
+}
+.fingur{
+    cursor: default;
+}
+
+.page-header{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 800px;
+    height: 48px;
+    background-color: #b3a0ff;
+    text-align: center;
+    margin-left: -400px;
+    display: flex;
+}
+
+.page-header .title{
+    color: #0000ff;
+    font-size: 20px;
+    line-height: 48px;
+    font-weight: bold;
+}
+
+.page-body{
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    bottom: 100px;
+    width: 800px;
+    margin-left: -400px;
+    border: darkgray 1px solid;
+}
+
+
+.page-body .login-form{
+    position: relative;
+    float: left;
+    display: inline-block;
+    top: 50%;
+    margin: -140px 0 0 100px;
+}
+
+.page-body .login-form .login-box{
+    padding: 10px 0;
+}
+
+.page-body .login-form .login-box input{
+    height: 30px;
+    width: 200px;
+}
+
+.page-body .login-form .login-box .login-span{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    height: 40px;
+    font-weight: bold;
+}
+
+.page-body .pic{
+    /*position: relative;*/
+    /*display: inline-block;*/
+
+    /*float: initial;*/
+    margin: 50px 0 50px 80px;
+    width: 30%;
+    height: 70%;
+}
+
+.page-body .login-form .login-box .login-error{
+    text-align: right;
+    font-size: 2px;
+    color: #ff0000;
+}

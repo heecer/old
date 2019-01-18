@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index/" method="post" target="_blank">
+    {% csrf_token %}
+{#    <P>{{ LF_obj.user.label }}{{ LF_obj.user }}{{ LF_obj.errors.user.0 }}</P>#}
+{#    <P>{{ LF_obj.pwd.label }}{{ LF_obj.pwd }}{{ LF_obj.errors.pwd.0 }}</P>#}
+{#    <P>{{ LF_obj.email.label }}{{ LF_obj.email }}{{ LF_obj.errors.email.0 }}</P>#}
+{#    <P>{{ LF_obj.code.label }}{{ LF_obj.code }}{{ LF_obj.errors.email.0 }}</P>#}
+    {{ LF_obj.as_p }}
+    <P><input type="submit" value="提交"></P>
+</form>
+</body>
+</html>

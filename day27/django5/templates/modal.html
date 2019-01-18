@@ -1,0 +1,65 @@
+<div class="shade hide"></div>
+    <div class="modal hide">
+        <form action="javascript:void(0)" method="post" id="add">
+            <div><input type="text" placeholder="用户名" name="username" id="username"></div>
+            <div><input type="text" placeholder="密码" name="pwd" id="pwd"></div>
+            <div id="group">
+               <select name="group_id" id="group_id">
+{#                {% for item in groups_obj %}#}
+{#                    <option value="{{ item.id }}">{{ item.group_name }}</option>#}
+{#                {% endfor %}#}
+                   <option value="{{ user_obj.0.user_to_group.id }}">{{ user_obj.0.user_to_group.group_name }}</option>
+                </select>
+            </div>
+            <div><span id="error_msg" style="color: #fa0000;"></span></div>
+            <input type="submit" value="提交" id="ajax-submit">
+            <input type="button" value="取消" id="cancel">
+        </form>
+    </div>
+
+
+<script type="text/javascript" src="/static/jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        $('#ajax-add').click(function () {
+            $('.shade,.modal').removeClass('hide');
+        });
+
+        $('#cancel').click(function () {
+            $('.shade,.modal').addClass('hide');
+        });
+        $('#ajax-submit').click(function () {
+            $.ajax({
+                url:'/python/add_user/',
+                type: 'POST',
+                data: $("#add").serialize(),
+                success: function (data) {
+                    var v = JSON.parse(data);
+                    if (v.status){
+                        alert('OK');
+                        location.reload();
+                    }else {
+                        $('#error_msg').text(v.error);
+                    }
+
+                }
+            })
+        });
+        $('.del_user').click(function () {
+            var id = $(this).parent().parent().attr('id');
+            var v = confirm('是否要删除？');
+            if(v){
+                $.ajax({
+                    url: '/python/del_user/',
+                    type: 'POST',
+                    data: {'id':id},
+                    success:function (data) {
+                        location.reload();
+                    }
+                })
+
+            }
+
+        })
+    })
+</script>

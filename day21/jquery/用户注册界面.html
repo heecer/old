@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body{
+			border: 0;
+			margin: 0 200px;
+		}
+		.page-head{
+			width: 100px;
+			height: 48px;
+
+		}
+		.page-body{
+			border: 1px solid #000000;
+			width: 800px;
+			height: 600px;		
+		}
+		.group{
+			width: 400px;
+			padding: 0 0 20px;
+		}
+		.register-left{
+			float: left;
+			width: 300px;
+			height: 400px;
+		}
+		.tip{
+			display: inline-block;
+			width: 100px;
+			text-align: right;
+		}
+		.red{
+			color: red;
+		}
+	</style>
+</head>
+<body >
+	<div class="page-head">老男孩</div>
+	<div class=".page-body">
+		<div class="register-left">
+			<div>
+				<h1>注册新用户</h1>
+				<form border>
+					<div class="group">
+						<label class="tip"><span class="red">*</span><span>用户名：</span></label>
+						<input type="text" name="username" required="true" label="用户名" Field='string' range="4-40"></input>
+						<i></i>
+					</div>
+					<div class="group">
+						<label class="tip"onclick=""><span class="red">*</span><span>手机号：</span></label>
+						<input type="text" name="telphone" required="true" label="手机号" mobile='true'></input>
+						<i></i>
+					</div>
+					<div class="group">
+						<label class="tip"><span class="red">*</span><span>登录密码：</span></label>
+						<input type="password" name="pwd" required="true" label="登录密码" min-len='6'></input>
+						<i></i>
+					</div>
+					<div class="group">
+						<label class="tip"><span class="red">*</span><span>确认密码：</span></label>
+						<input type="password" name="confirmpwd" required="true" label="确认密码"></input>
+						<i></i>
+					</div>
+					<div class="group">
+						<label class="tip"><span class="red">*</span><span>验证码：</span></label>
+						<input type="text" name="checkcode" style="width: 80px;"></input>
+						<a href=""><img src=""></a>
+					</div>
+					<div class="group">
+						<input type="submit" name="submit" value="提交" style="background-color: blue;margin-right: auto;">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="E:\老男孩\day21\jquery\jquery-1.12.4.js"></script>	
+</body>
+</html>

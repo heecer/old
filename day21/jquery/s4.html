@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.hide{
+		display: none;
+	}
+		table{
+			border: 1px solid;
+		}
+		.item{
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background-color: black;
+			opacity: 0.6;
+			z-index: 9;
+		}
+		.modalBox{
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			width: 400px;
+			height: 300px;
+			margin: -150px 0 0 -200px;
+			background-color: #eeeeee;
+			z-index: 10;
+		}
+	</style>
+</head>
+<body>
+	<button>添加</button>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>IP</td>
+				<td>Port</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td td="1.1">92.168.0.1</td>
+				<td td="1.2">80</td>
+				<td>
+					<a class="edit" href="#">编辑</a> || <a href="#">删除</a>
+				</td>
+			</tr>
+			<tr>
+				<td td="2.1">92.168.1.1</td>
+				<td td="2.2">80</td>
+				<td><a class="edit" href="#">编辑</a> || <a href="#">删除</a></td>
+			</tr>
+			<tr>
+				<td td="3.1">92.168.2.1</td>
+				<td td="3.2">80</td>
+				<td><a class="edit" href="#">编辑</a> || <a href="#">删除</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="item hide"></div>
+	<div class="modalBox hide">
+		<input type="text" name="hostname">
+		<input type="text" name="port">
+		<button id='i1'>确认</button> 
+	</div>
+	
+	<script type="text/javascript" src="E:\老男孩\day21\jquery\jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$("button").click(function () {
+			// body...
+			$(this).nextAll(".item,.modalBox").removeClass("hide").click(function () {
+				// body...
+				$(this).addClass("hide");
+				
+			})
+		})
+		$("tbody tr td").find(".edit").click(function () {
+			// body...
+			var v = $(this).parent().prevAll();
+			// $(".item").removeClass("hide");
+			var port = $(v[0]).text();
+			var hostname = $(v[1]).text();
+			console.log(hostname,port);
+			$('.modalBox input[name="hostname"]').val(hostname);
+			$('.modalBox input[name="port"]').val(port);
+			$(".item,.modalBox").removeClass("hide").each(function () {
+				// body...
+				$(this).click(function () {
+					// body...
+					if($(this).hasClass('item')){
+						$(".item,.modalBox").addClass("hide");
+					}
+				})
+
+			})
+			$('.modalBox button[id="i1"]').click(function () {
+				// body...
+				var ok = confirm("确定修改？")
+				if(ok){
+					var newHostname = $('.modalBox input[name="hostname"]').val();
+					var newPort = $('.modalBox input[name="port"]').val();
+					$(v[0]).text(newPort);
+					$(v[1]).text(newHostname);
+					$(".item,.modalBox").addClass("hide");
+				}
+			})
+					
+	})
+
+	</script>
+</body>
+</html>

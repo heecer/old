@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jQuerybxSlider/jquery.bxslider.css">
+    <link rel="stylesheet" href="/static/login.css">
+</head>
+<body style="margin: 0;">
+    <div class="page-header"></div>
+    <div class="page-body">
+        <div class="content-left">
+            <form action="/join/" method="post">
+                <p>
+                    <label  for="username"><span>*</span>用户名：</label>
+                    <input type="text" id="username" name="username" placeholder="用户名">
+                </p>
+                <p>
+                    <label for="pwd"><span>*</span>密码：</label>
+                    <input type="password" id="pwd" name="pwd" placeholder="密码">
+                </p>
+                <p>
+                    <label for=""><span>*</span>验证码：</label>
+                    <img src="#">
+                </p>
+                <span style="color: red;">{{ error }}</span>
+                <input type="submit" value="登录"
+                       style="background-color: #dddddd;color: #0000ff;padding: 5px 20px;position: absolute;right: 30px;bottom: 10px;">
+
+            </form>
+        </div>
+        <div class="content-right bxslider">
+            <ul>
+                <li><img src="图片/1.jpg" alt="1"></li>
+                <li><img src="图片/2.jpg" alt="2"></li>
+                <li><img src="图片/3.jpg" alt="3"></li>
+                <li><img src="图片/4.jpg" alt="4"></li>
+                <li><img src="图片/5.jpg" alt="5"></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" href="jquery-1.12.4.js"></script>
+    <script type="text/javascript" href="jQuerybxSlider/jquery.bxslider.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('.bxslider').bxSlider();
+        });
+    </script>
+</body>
+</html>

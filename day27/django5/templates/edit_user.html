@@ -1,0 +1,27 @@
+{% extends "master.html" %}
+{% block link %}
+    <style>
+    body{
+        margin: 60px 0  0 60px;
+    }
+    </style>
+{% endblock %}
+{% block edit_user %}
+    <form action="/python/edit_user-{{ user_info.id }}/" method="POST">
+{#        <p><input type="text" name="user" value="{{ user_info.user_name }}"><span>{{ user_obj.errors.user.0 }}</span></p>#}
+{#        <p><input type="text" name="pwd" value="{{ user_info.password }}"><span>{{ user_obj.errors.pwd.0 }}</span></p>#}
+{#        <p><input type="text" name="user_to_group_id"><span></span></p>#}
+{#        <p><input type="submit" value="提交"><span></span></p>#}
+
+        <p>{{ user_obj.user_name.label }}{{ user_obj.user_name }}<span>{{ user_obj.errors.user_name.0 }}</span></p>
+        <p>{{ user_obj.password.label }}{{ user_obj.password }}<span>{{ user_obj.errors.password.0 }}</span></p>
+        <p>{{ user_obj.user_to_group.label }}{{ user_obj.user_to_group }}</p>
+{#        <p><input type="checkbox" name="user_to_group_id"><span></span></p>#}
+        <p><input type="submit" value="提交"><span></span></p>
+
+{#        #}
+{#        {{ user_obj.as_p }}#}
+{#        <p><input type="submit" value="提交"><span></span></p>#}
+    </form>
+
+{% endblock %}

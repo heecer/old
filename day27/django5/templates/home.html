@@ -1,0 +1,51 @@
+{% extends "master.html" %}
+{% block Title %}后台管理{% endblock %}
+{% block link %}
+<link rel="stylesheet" href="/static/home.css">
+    <link rel="stylesheet" href="/static/modal.css">
+{% endblock %}
+{% block home %}
+<div class="page-body">
+        <p><input type="button" id="add_group" value="添加"></p>
+        <ol>
+            {% for group in group_list %}
+                <li><a href="/python/groups-{{ group.id }}/" target="_blank">{{ group.group_name }}</a></li>
+            {% endfor %}
+        </ol>
+    </div>
+
+<div class="shade hide"></div>
+    <div class="modal hide">
+        <form action="javascript:void(0)" method="post" id="group">
+            <p>{{ group_obj.group_name.label }}{{ group_obj.group_name }}{{ group_obj.errors.group_name.0 }}</p>
+            <input type="submit" value="提交" id="ajax-submit">
+            <input type="button" value="取消" id="cancel">
+        </form>
+    </div>
+<script type="text/javascript" src="/static/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $('#add_group').click(function () {
+                $('.shade,.modal').removeClass('hide');
+                $('#cancel').click(function () {
+                    $('.shade,.modal').addClass('hide');
+                });
+                $('#ajax-submit').click(function () {
+                    $.ajax({
+                        url: '/python/add_group/',
+                        type: 'POST',
+                        data: $("#group").serialize(),
+                        success:function (data) {
+                            if (data.status){
+                                location.reload()
+                            }else{
+
+                            }
+                        }
+                    })
+                })
+            })
+        })
+    </script>
+{% endblock %}
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .left{
+            float: left;
+        }
+        .right{
+            float: right;
+        }
+        .clear{
+            clear: both;
+        }
+        .page-header{
+            /*position: fixed;*/
+            /*top: 0;*/
+            height: 48px;
+            background-color: #121c59;
+            line-height: 49px;
+            text-align: center;
+            color: #fff;
+            font-size: 20pt;
+        }
+        .page-content{
+            /*border: #4F4F4F 1px solid;*/
+        }
+        .page-content .menu{
+            position: absolute;
+            top: 50px;
+            bottom: 0;
+            left: 0;
+            width: 20%;
+            /*height: 500px;*/
+            background: #4f4f4f;
+            min-width: 200px;
+        }
+        .page-content .content{
+            position: absolute;
+            top: 50px;
+            right: 0;
+            bottom: 0;
+            width: 80%;
+            background: #800080;
+            overflow: auto;
+        }
+        .page-content .content .tt{
+            position: fixed;
+            right: 5px;
+            bottom: 5px;
+            background-color: #ff4828;
+        }
+        .page-footer{}
+    </style>
+</head>
+<body>
+    <div class="page-header">后台管理</div>
+    <div class="page-content">
+        <div class="menu left">aaa</div>
+        <div class="content right">
+            <p>abc</p><p>abc</p><p>abc</p><p>abc</p>
+            <p>abc</p><p>abc</p><p>abc</p><p>abc</p>
+            <p>abc</p><p>abc</p><p>abc</p><p>abc</p>
+            <p>abc</p><p>abc</p><p>abc</p><p>abc</p>
+            <p>abc</p><p>abc</p><p>abc</p><p>abc</p>
+            <p>abc</p><p>abc</p><p>abc</p><p>abc</p>
+            <p>abc</p><p>abc</p><p>abc</p><p>abc</p>
+            <div class="tt" onclick="f()">返回顶部</div>
+        </div>
+        <div class="clear"></div>
+
+    </div>
+    <div class="page-footer"></div>
+<script>
+    function f() {
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+</body>
+</html>

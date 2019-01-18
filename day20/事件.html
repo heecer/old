@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #t1{
+            border: 1px solid;
+            width: 300px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <table id="t1">
+        <tr><td>1</td><td>2</td><td>3</td></tr>
+        <tr><td>1</td><td>2</td><td>3</td></tr>
+        <tr><td>1</td><td>2</td><td>3</td></tr>
+
+    </table>
+    <script type="text/javascript">
+        var rows =document.getElementsByTagName('tr');
+        for (var i=0;i<rows.length;i++){
+            rows[i].onmouseover = function () {
+                this.style.background = "red";
+                this.style.textAlign = "center";
+            }
+            rows[i].onmouseout = function () {
+                this.style.background = "";
+                this.style.textAlign = "left";
+            }
+            rows[i].addEventListener()
+        }
+    </script>
+</body>
+</html>

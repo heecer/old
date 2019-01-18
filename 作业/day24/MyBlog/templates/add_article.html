@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/static/plugins/kindeditor/kindeditor-all-min.js"></script>
+</head>
+<body>
+<div>
+    <ol style="margin-bottom: 0;">
+        <li><a href="#">文章管理</a></li>
+        <li class="active">创建文章</li>
+    </ol>
+</div>
+<div>
+    <form action="">
+        <div>
+            <label for="title_id">标题</label>
+            <input type="text" id="title_id" name="title" placeholder="输入文章标题">
+        </div>
+        <div>
+            <label for="title">简介</label>
+            <input class="form-control" type="text"  placeholder="文章简介">
+        </div>
+        <div>
+            <label for="content_id">内容</label>
+            <textarea name="content" id="content_id" ></textarea>
+        </div>
+        <div>
+            <label for="type">类型</label>
+            <div>
+                <label><input type="radio" name="types" value="1">python</label>
+                <label><input type="radio" name="types" value="2">python2</label>
+                <label><input type="radio" name="types" value="3">python3</label>
+            </div>
+        </div>
+        <div>
+            <label for="category">分类</label>
+            <div>
+                <label><input type="checkbox" id="category">category1</label>
+                <label><input type="checkbox" id="category">category2</label>
+                <label><input type="checkbox" id="category">category3</label>
+            </div>
+        </div>
+        <div>
+            <div><input type="submit" value="添加"></div>
+        </div>
+    </form>
+</div>
+<script
+        src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/plugins/kindeditor/kindeditor-all-min.js"></script>
+<script>
+    $(function () {
+        var settings = {
+            /*width: '100%',       // 文本框宽度(可以百分比或像素)
+        height: '300px',     // 文本框高度(只能像素)
+        minWidth: 200,       // 最小宽度（数字）
+        minHeight: 400      // 最小高度（数字）*/
+            uploadJson: '/upload_img/',   //上传请求路劲
+            fileManagerJson: '/file_manager/',     //文件管理请求路径
+            autoHeightMode: true,
+            allowFileManager: true,    //允许文件空间管理
+            csrfmiddlewaretoken: '{{ csrf_token }}',  //解除csrf限制
+            //filePostName : 'upload_file_name',
+        };
+        KindEditor.create('#content_id', settings)
+    })
+
+</script>
+</body>
+</html>
